@@ -19,6 +19,7 @@
   "scripts": {},
   "version": "1.0.0",
   "dependencies": {
+    "apollo-server": "^3.6.7",
     "apollo-server-cloud-functions": "^3.6.7"
   }
 }
