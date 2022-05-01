@@ -17,7 +17,11 @@
   "name": "twilio-kanban-graphql-server",
   "private": false,
   "repository": "git@github.com:airclough/twilio-kanban-graphql-server.git",
-  "scripts": {},
+  "scripts": {
+    "build": "yarn run lint && tsc && cp ./{.env.yaml,package.json,yarn.lock} ./dist && cp -R ./config/credentials ./dist",
+    "deploy": "yarn run build && gcloud functions deploy express-api --source dist --entry-point app --env-vars-file .env.yaml --runtime nodejs14 --trigger-http",
+    "lint": "eslint 'src/**/*.{js,ts}' --quiet"
+  },
   "version": "1.0.0",
   "dependencies": {
     "apollo-server": "^3.6.7",

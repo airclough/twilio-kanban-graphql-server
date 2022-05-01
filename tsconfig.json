@@ -5,7 +5,7 @@
   "exclude": [
     "node_modules"
   ],
-  "extends": "@tsconfig/next/tsconfig.json",
+  "extends": "@tsconfig/node16/tsconfig.json",
   "include": [
     "**/*.ts",
     "**/*.tsx",

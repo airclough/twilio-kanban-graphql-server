@@ -14,7 +14,10 @@ module.exports = {
   rules: {
     'array-bracket-spacing': [ 'error', 'always' ],
     'computed-property-spacing': [ 'error', 'always' ],
+    'import/no-import-module-exports': 0,
+    'import/prefer-default-export': 0,
     'max-len': [ 'error', { 'code': 120 } ],
+    'no-plusplus': 0,
     'semi': [ 'error', 'always' ],
     'space-in-parens': [ 'error', 'always' ],
     'template-curly-spacing': [ 'error', 'always' ],
