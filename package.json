@@ -18,8 +18,8 @@
   "private": false,
   "repository": "git@github.com:airclough/twilio-kanban-graphql-server.git",
   "scripts": {
-    "build": "yarn run lint && tsc && cp ./{.env.yaml,package.json,yarn.lock} ./dist && cp -R ./config/credentials ./dist",
-    "deploy": "yarn run build && gcloud functions deploy express-api --source dist --entry-point app --env-vars-file .env.yaml --runtime nodejs14 --trigger-http",
+    "build": "yarn run lint && tsc && cp ./{.env.yaml,package.json,yarn.lock} ./dist",
+    "deploy": "yarn run build && gcloud beta functions deploy twilio-kanban-graphql-server --allow-unauthenticated --entry-point handler --env-vars-file .env.yaml --gen2 --region us-central1 --runtime nodejs16 --source dist --trigger-http",
     "lint": "eslint 'src/**/*.{js,ts}' --quiet"
   },
   "version": "1.0.0",
@@ -27,6 +27,7 @@
     "apollo-server": "^3.6.7",
     "apollo-server-cloud-functions": "^3.6.7",
     "axios": "^0.27.2",
+    "graphql": "^16.4.0",
     "uuid": "^8.3.2"
   }
 }

@@ -46,7 +46,7 @@ export const getTasks = async ( _, { numTasks } ) => {
   for ( let i = 0; i < numTasks; i++ ) {
     const randomStartIndex = Math.floor( Math.random() * length );
     const description = hipsum
-      .slice( randomStartIndex, Math.floor( Math.random() * length ) + randomStartIndex );
+      .slice( randomStartIndex, Math.floor( Math.random() * length ) + ( randomStartIndex + 1 ) );
     const [ name ] = description;
     const status = statuses[ Math.floor( Math.random() * length ) ];
 
