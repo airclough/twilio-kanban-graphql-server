@@ -1,7 +1,5 @@
 .DS_Store
-.env*.local
-.next
-.npmrc
+.env*
 node_modules
 yarn-debug.log*
 yarn-error.log*
