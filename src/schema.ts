@@ -17,7 +17,7 @@ export const typeDefs = gql`
     status: String!
   }
   type Query {
-    getTasks ( numTasks: Int ): [ Task! ]!
+    getTasks ( numTasks: Int! ): [ Task! ]!
   }
 `;
 
