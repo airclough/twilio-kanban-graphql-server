@@ -13,6 +13,7 @@ export const typeDefs = gql`
   }
   type Task {
     description: String!
+    id: String!
     name: String!
     status: String!
   }

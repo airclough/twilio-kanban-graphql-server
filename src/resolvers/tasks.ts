@@ -27,9 +27,7 @@ const statuses = [
 export const getTasks = async ( _, { numTasks } ) => {
   const hipsum: string[] | null = await axios.get( `${ HIPSUM_API_ENDPOINT }?type=hipster-centric&sentences=10` )
     .then( ( { data } ) => {
-      const { data: responseData, errors } = data;
-      if ( errors ) { console.error( JSON.stringify( errors ) ); return null; }
-      const [ hipsumString ] = responseData;
+      const [ hipsumString ] = data;
 
       return hipsumString.split( ' ' );
     } )
@@ -40,21 +38,20 @@ export const getTasks = async ( _, { numTasks } ) => {
       console.error( JSON.stringify( errors ) );
     } );
   if ( !hipsum ) return null;
-  const { length } = hipsum;
   const tasks: Task[] = [];
 
   for ( let i = 0; i < numTasks; i++ ) {
-    const randomStartIndex = Math.floor( Math.random() * length );
+    const randomStartIndex = Math.floor( Math.random() * hipsum.length );
     const description = hipsum
-      .slice( randomStartIndex, Math.floor( Math.random() * length ) + ( randomStartIndex + 1 ) );
+      .slice( randomStartIndex, Math.floor( Math.random() * hipsum.length ) + ( randomStartIndex + 1 ) );
     const [ name ] = description;
-    const status = statuses[ Math.floor( Math.random() * length ) ];
+    const status = statuses[ Math.floor( Math.random() * statuses.length ) ];
 
     tasks.push( {
       description: description.join( ' ' ),
       id: uuidv4(),
       name,
-      status: Status[ status ],
+      status: status as Status,
     } );
   }
 
